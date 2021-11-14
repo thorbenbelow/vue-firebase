@@ -6,22 +6,22 @@ import {auth} from '@/main.js'
 Vue.use(VueRouter)
 
 function requireAuth(to, from, next) {
-  if (!auth.currentUser) {
+  if (!auth().currentUser) {
     console.log("User is not logged in");
     next({
       path: '/login',
       query: { redirect: to.fullPath }
     })
   } else {
-    console.log("User is logged in:", auth.currentUser.uid);
+    console.log("User is logged in:", auth().currentUser.uid);
     next()
   }
 }
 function requireNoAuth(to, from, next) {
-  if (auth.currentUser) {
-    console.log("User is logged in:", auth.currentUser.uid);
+  if (auth().currentUser) {
+    console.log("User is logged in:", auth().currentUser.uid);
     next({
-      path: '/home'
+      path: '/'
     })
   } else {
     console.log("User is not logged in");

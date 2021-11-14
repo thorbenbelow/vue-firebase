@@ -16,11 +16,10 @@ export const app = initializeApp({
   apiKey: 'AIzaSyBpdbFO9Ww_zlyxFPFeZ22e0zsmZgLfDMc'
 })
 
-
-export const auth = getAuth(app);
+export const auth = () => getAuth(app);
 export const db = getFirestore(app)
 
-const unsubscribe = onAuthStateChanged(auth, () => {
+const unsubscribe = onAuthStateChanged(auth(), () => {
   new Vue({
     router,
     vuetify,
