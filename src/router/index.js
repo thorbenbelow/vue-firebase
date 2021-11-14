@@ -1,8 +1,36 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import {getAuth} from 'firebase/auth'
+import {app} from '@/main.js'
 
 Vue.use(VueRouter)
+
+function requireAuth(to, from, next) {
+  const auth = getAuth(app);
+  if (!auth.currentUser) {
+    console.log("User is not logged in");
+    next({
+      path: '/login',
+      query: { redirect: to.fullPath }
+    })
+  } else {
+    console.log("User is logged in:", auth.currentUser.uid);
+    next()
+  }
+}
+function requireNoAuth(to, from, next) {
+  const auth = getAuth(app);
+  if (auth.currentUser) {
+    console.log("User is logged in:", auth.currentUser.uid);
+    next({
+      path: '/home'
+    })
+  } else {
+    console.log("User is not logged in");
+    next()
+  }
+}
 
 const routes = [
   {
@@ -11,12 +39,22 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    beforeEnter: requireNoAuth,
+    component: () => import('../views/auth/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    beforeEnter: requireNoAuth,
+    component: () => import('@/views/auth/Register.vue')
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    beforeEnter: requireAuth,
+    component: () => import('../views/About.vue')
   }
 ]
 
