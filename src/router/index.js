@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import {getAuth} from 'firebase/auth'
-import {app} from '@/main.js'
+import {auth} from '@/main.js'
 
 Vue.use(VueRouter)
 
 function requireAuth(to, from, next) {
-  const auth = getAuth(app);
   if (!auth.currentUser) {
     console.log("User is not logged in");
     next({
@@ -20,7 +18,6 @@ function requireAuth(to, from, next) {
   }
 }
 function requireNoAuth(to, from, next) {
-  const auth = getAuth(app);
   if (auth.currentUser) {
     console.log("User is logged in:", auth.currentUser.uid);
     next({

@@ -71,8 +71,8 @@
 
 
 <script>
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
-import {app} from '@/main.js'
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import {auth} from '@/main.js'
 
 export default {
   data() {
@@ -87,7 +87,6 @@ export default {
   },
   methods: {
     async submit() {
-      const auth = getAuth(app);
       try {
         await createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
         // await userCredential.user.updateProfile({displayName: this.form.name})

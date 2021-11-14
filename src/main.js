@@ -4,16 +4,23 @@ import router from './router'
 import {initializeApp} from 'firebase/app'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import vuetify from './plugins/vuetify'
+import {getFirestore} from 'firebase/firestore'
+import { firestorePlugin } from 'vuefire'
 
 Vue.config.productionTip = false
+
+Vue.use(firestorePlugin)
 
 export const app = initializeApp({
   projectId: 'secret-santa-bbcfd',
   apiKey: 'AIzaSyBpdbFO9Ww_zlyxFPFeZ22e0zsmZgLfDMc'
 })
-// export const db = getFirestore(app);
 
-const unsubscribe = onAuthStateChanged(getAuth(app), () => {
+
+export const auth = getAuth(app);
+export const db = getFirestore(app)
+
+const unsubscribe = onAuthStateChanged(auth, () => {
   new Vue({
     router,
     vuetify,
