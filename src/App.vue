@@ -8,6 +8,7 @@
         >Login</v-btn
       >
       <v-btn link to="/register" v-if="!user" text color="pink">Register</v-btn>
+      <v-btn icon v-if="user"><v-icon>mdi-bell-outline</v-icon></v-btn>
       <v-btn link to="/new" icon v-if="user"><v-icon>mdi-plus</v-icon></v-btn>
       <v-menu offset-y v-if="user">
         <template v-slot:activator="{ attrs, on }">

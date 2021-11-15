@@ -1,5 +1,11 @@
 <template>
-  <h1>New Board</h1>
+  <v-container>
+    <v-card>
+      <v-card-title>New Secret Santa</v-card-title>
+      <v-divider></v-divider>
+      <v-card-text>Form</v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
