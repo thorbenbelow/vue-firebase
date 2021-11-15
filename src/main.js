@@ -12,8 +12,8 @@ Vue.config.productionTip = false
 Vue.use(firestorePlugin)
 
 export const app = initializeApp({
-  projectId: 'secret-santa-bbcfd',
-  apiKey: 'AIzaSyBpdbFO9Ww_zlyxFPFeZ22e0zsmZgLfDMc'
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY
 })
 
 export const auth = () => getAuth(app);
