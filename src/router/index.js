@@ -48,6 +48,24 @@ const routes = [
     component: () => import('@/views/auth/Register.vue')
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    beforeEnter: requireAuth,
+    component: () => import('@/views/user/Dashboard.vue')
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    beforeEnter: requireAuth,
+    component: () => import('@/views/user/Settings.vue')
+  },
+  {
+    path: '/new',
+    name: 'New-Board',
+    beforeEnter: requireAuth,
+    component: () => import('@/views/user/NewBoard.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     beforeEnter: requireAuth,
