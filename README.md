@@ -1,4 +1,4 @@
-# secret-santa
+# vue-firebase
 
 ## Project setup
 ```
