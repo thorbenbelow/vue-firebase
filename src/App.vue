@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app flat>
       <v-btn link to="/" icon><v-icon>mdi-home-outline</v-icon></v-btn>
-      <v-toolbar-title>Secret Santa</v-toolbar-title>
+      <v-toolbar-title>Vue Firebase</v-toolbar-title>
       <v-spacer />
       <v-btn link to="/login" v-if="!user" outlined color="pink" class="mr-2"
         >Login</v-btn
@@ -49,7 +49,7 @@
     </v-main>
     <v-footer>
       <v-col class="text-center" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Merle ❤</strong>
+        {{ new Date().getFullYear() }} — <strong>❤</strong>
       </v-col>
     </v-footer>
   </v-app>
