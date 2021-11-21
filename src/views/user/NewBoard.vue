@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title>New Secret Santa</v-card-title>
+      <v-card-title>Create</v-card-title>
       <v-divider></v-divider>
       <v-card-text>Form</v-card-text>
     </v-card>
