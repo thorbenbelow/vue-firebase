@@ -8,6 +8,10 @@
       name: Deploying to Github Pages
       runs-on: ubuntu-latest
       environment: production
+      env:
+        VUE_APP_FIREBASE_API_KEY: ${{ secrets.VUE_APP_FIREBASE_API_KEY }}
+        VUE_APP_FIREBASE_PROJECT_ID: ${{ secrets.VUE_APP_FIREBASE_PROJECT_ID }}
+        CI_PROJECT_NAME: ${{ secrets.CI_PROJECT_NAME }}
       steps:
           - uses: actions/checkout@v2
           - uses: actions/setup-node@v2
