@@ -15,6 +15,6 @@
           - name: Install packages
             run: npm i
           - name: Set Creds
-            run: git config user.name "auto deploy" && git config thorbenbelow@gmail.com ${{env.GIT_EMAIL}}
+            run: git config user.name "auto deploy" && git config user.email thorbenbelow@gmail.com
           - name: Deploy
             run: ./scripts/deploy.sh
