@@ -15,10 +15,10 @@
           - name: Vue to Github Pages
             uses: xRealNeon/VuePagesAction@1.0.1
             with:
-              username: "Thorben Below"
-              reponame: "vue-firebase"
+              username: ${{ secrets.CI_GIT_USERNAME }}
+              reponame: ${{ secrets.CI_PROJECT_NAME }}
               gitemail: "deploy@ci.invalid"
               gitname: "ci"
               gitmsg: "deploy pages"
-              token: ${{ secrets.GITHUB_TOKEN }}
+              token: ${{ secrets.TOKEN }}
 
