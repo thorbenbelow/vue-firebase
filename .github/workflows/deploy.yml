@@ -11,10 +11,14 @@
           - uses: actions/checkout@v2
           - uses: actions/setup-node@v2
             with:
-              node-version: '12'
-          - name: Install packages
-            run: npm i
-          - name: Set Creds
-            run: git config user.name "auto deploy" && git config user.email thorbenbelow@gmail.com
-          - name: Deploy
-            run: ./scripts/deploy.sh
+              node-version: '16'
+          - name: Vue to Github Pages
+            uses: xRealNeon/VuePagesAction@1.0.1
+            with:
+              username: "Thorben Below"
+              reponame: "vue-firebase"
+              gitemail: "deploy@ci.invalid"
+              gitname: "ci"
+              gitmsg: "deploy pages"
+              token: ${{ secrets.GITHUB_TOKEN }}
+
